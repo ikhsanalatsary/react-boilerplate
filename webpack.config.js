@@ -2,6 +2,9 @@
 
 const path = require('path');
 const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: './app/app.js',
@@ -15,14 +18,17 @@ module.exports = {
   },
   module: {
     loaders: [
-      {
-        test: /.jsx?$/,
-        loader: 'babel-loader',
-        exclude: /node_modules/,
-        query: {
-          presets: ['es2015', 'react']
-        }
-      }
+      { test: /.jsx?$/, loader: 'babel-loader', exclude: /node_modules/ },
+      { test: /\.css$/, loader: "style-loader!css-loader" },
+      { test: /\.png$/, loader: "url-loader?limit=100000" },
+      { test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)$/, loader: 'file' },
     ]
   },
+  devtool: 'eval-source-map',
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './app/index.html',
+      inject: 'body',
+    }),
+  ],
 };
