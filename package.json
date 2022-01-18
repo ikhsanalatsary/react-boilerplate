@@ -12,9 +12,9 @@
   "author": "Abdul Fattah Ikhsan <ikhsannetwork@gmail.com> (http://ikhsannetwork.com/)",
   "license": "MIT",
   "dependencies": {
-    "react": "15.4.0",
+    "react": "16.5.0",
     "react-bootstrap": "0.30.5",
-    "react-dom": "15.4.0"
+    "react-dom": "16.5.0"
   },
   "devDependencies": {
     "babel-core": "6.5.1",
